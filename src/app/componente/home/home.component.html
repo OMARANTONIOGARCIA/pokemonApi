@@ -1,0 +1,59 @@
+
+
+<app-nav (valueResponse)="recibiPokemon($event)"></app-nav>
+
+
+<div class="row col-sm-12" style="margin-top: 20px">
+
+  <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+            <ngb-panel title="Información Pokedex">
+              <ng-template ngbPanelContent>
+
+                <div class="flex-container">
+                    <div class="row">
+                      <span class="flex-item">
+                        <h3> <strong> {{this.foundpokemon?.name  | uppercase }} </strong> </h3>
+                        <img 
+                            [src]="this.foundpokemon?.sprites.front_default" 
+                            height="350px"
+                            width="280px"
+                            alt="pokemon">
+
+                            <div class="row" style="margin:0px; margin-top:-100px;">
+                              <div class="col"><span style="font-size: 16px!important;">  Height:  {{ this.foundpokemon?.height}}</span></div>
+                              <div class="col"><span style="font-size: 16px!important;">  Weight:  {{ this.foundpokemon?.weight}}</span></div>
+                            </div>
+
+                      </span>
+                    </div>
+                    <div class="row">
+                      <div style="margin-top: -12.5em; align-items: center; text-align: center;">
+                        <h3> <strong>HABILIDADES</strong></h3><hr>
+                        <li class="habilidades" *ngFor="let item of this.foundpokemon?.abilities" style="text-align:initial!important;">
+                            <span (click)="getHabilidad(item.ability.url)"> {{item.ability.name ? (item.ability.name | uppercase) : '' }}</span>
+                        </li>
+                      </div>
+                    </div>
+                </div>
+
+                <ng-container *ngIf="this.habilidadpokemon">
+                  <div style="margin: 10px">
+                    <h5> {{ this.habilidadpokemon?.short_effect }}</h5><hr>
+                      <div style="background:rgb(131, 131, 131); border-radius:5px;">
+                      <p style="margin: 10px;"> {{ this.habilidadpokemon?.effect}} </p>
+                  </div>
+                </div>
+                </ng-container>
+                
+
+
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+
+    </div>
+    <div class="col-sm-2"></div>
+</div>

@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Navbar</a>
+  <div class="col-sm-4">
+    <form [formGroup]="form" role="form" (submit)="enviarPokemon();" class="form-inline">
+      <div class="input-group">
+        <input class="form-control mr-sm-2" 
+          formControlName="pokemon" 
+          name="pokemon" 
+          autocomplete="off"
+          maxlength="20"
+          placeholder="Pokemon">
+        <button type="submit" 
+          [disabled]="!this.form.dirty" 
+          class="btn btn-block btn-primary"> Buscar</button>
+      </div>
+    </form>
+  </div>
+</nav>
